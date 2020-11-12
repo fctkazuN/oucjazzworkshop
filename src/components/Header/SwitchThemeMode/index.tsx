@@ -1,14 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { RootState } from '../../../state/store';
-import { toggleThemeMode, ThemeType } from '../../../state/slices/colorThemeSlice';
-import Icon from 'utils/Icon';
-import IconButton from '@material-ui/core/IconButton'
+import React from "react";
+import { connect } from "react-redux";
+import { RootState } from "../../../state/store";
+import {
+  toggleThemeMode,
+  ThemeType,
+} from "../../../state/slices/colorThemeSlice";
+import IconButton from "@material-ui/core/IconButton";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+import Brightness7Icon from "@material-ui/icons/Brightness7";
 
 const SwitchThemeMode: React.FC<Props> = (props) => {
   return (
     <IconButton onClick={props.toggleThemeMode()}>
-      <Icon icon={props.themeMode === 'light' ? 'moon' : 'sun'} />
+      {props.themeMode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
     </IconButton>
   );
 };
@@ -16,14 +20,14 @@ const SwitchThemeMode: React.FC<Props> = (props) => {
 type Props = {
   themeMode: ThemeType;
   toggleThemeMode: Function;
-}
+};
 
 const mapStateProps = (state: RootState) => ({
-  themeMode: state.colorTheme.themeMode
-})
+  themeMode: state.colorTheme.themeMode,
+});
 
 const mapDispatchToProps = {
-  toggleThemeMode
-}
+  toggleThemeMode,
+};
 
 export default connect(mapStateProps, mapDispatchToProps)(SwitchThemeMode);

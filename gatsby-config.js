@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `小樽商科大学ジャズ研究会`,
     description: `小樽商科大学ジャズ研究会ホームページ`,
+    author: `小樽商科大学ジャズ研究会`,
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -27,6 +28,14 @@ module.exports = {
         icon: `src/assets/images/gatsby-icon.png`
       }
     },
-    `gatsby-plugin-offline`
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: "kaeru-pyoko-hosting",
+          protocol: "https",
+          hostname: "http://kaeru-pyoko-hosting.s3-website-ap-northeast-1.amazonaws.com",
+      },
+    }
   ]
 };

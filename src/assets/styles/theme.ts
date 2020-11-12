@@ -12,6 +12,10 @@ export const light = createMuiTheme({
       main: grey[900],
       light: grey[800],
       dark: '#000000'
+    },
+    background: {
+      default: grey[200],
+      paper: "#fff"
     }
   }
 })
@@ -27,6 +31,10 @@ export const dark = createMuiTheme({
       main: grey[900],
       light: grey[800],
       dark: '#000000'
+    },
+    background: {
+      default: '#000',
+      paper: grey[900]
     }
   }
 })

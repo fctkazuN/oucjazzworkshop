@@ -1,9 +1,10 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography'
-import Link from '../Customs/gatsbyLink';
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import Link from "../Customs/gatsbyLink";
 
-import MainNav from './MainNav';
-import SwitchThemeMode from './SwitchThemeMode';
+import MainNav from "./MainNav";
+import SwitchThemeMode from "./SwitchThemeMode";
+import { AppBar, Toolbar } from "@material-ui/core";
 
 interface Props {
   siteTitle: string;
@@ -15,17 +16,21 @@ interface Props {
  * @param {Props} props
  */
 const Header: React.FC<Props> = ({ siteTitle }) => (
-  <div id='Header'>
-    <Link to="/">
-      <Typography variant='h4'>{siteTitle}</Typography>
-    </Link>
-    <MainNav />
-    <SwitchThemeMode />
+  <div id="Header">
+    <AppBar position="static" color="secondary">
+      <Toolbar>
+        <Link to="/">
+          <Typography variant="h4">{siteTitle}</Typography>
+        </Link>
+        <MainNav />
+        {/* <SwitchThemeMode /> */}
+      </Toolbar>
+    </AppBar>
   </div>
 );
 
 Header.defaultProps = {
-  siteTitle: ``
+  siteTitle: ``,
 };
 
 export default Header;

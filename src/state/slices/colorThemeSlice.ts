@@ -14,7 +14,7 @@ interface UIState {
 }
 
 const initialState: UIState = {
-  themeMode: ThemeMode.LIGHT
+  themeMode: ThemeMode.DARK
 };
 
 // Slice
