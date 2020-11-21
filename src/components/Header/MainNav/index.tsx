@@ -1,17 +1,45 @@
-import React, { useState } from "react";
-import Link from "../../Customs/gatsbyLink";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { List, ListItem } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  horizontal: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "row",
+  },
+  link: {
+    textDecoration: "none",
+  },
+  menuButton: {
+    width: theme.spacing(12),
+    margin: theme.spacing(0, 0.5),
+    textTransform: "none",
+    fontWeight: 700,
+  },
+  hoverPrimaryMain: {
+    "&:hover": {
+      backgroundColor: theme.palette.primary.main,
+    },
+  },
+  menuButtonHoverDark: {
+    "&:hover": {
+      backgroundColor: theme.palette.primary.dark,
+    },
+  },
+}));
 
 type NavItem = {
   title: string;
   slug: string;
 };
 
-const navItems: NavItem[] = [
+export const navItems: NavItem[] = [
   {
     title: "Home",
-    slug: "/home",
+    slug: "/",
   },
   {
     title: "Member",
@@ -32,19 +60,27 @@ const navItems: NavItem[] = [
 ];
 
 const MainNav: React.FC = () => {
+  const classes = useStyles();
+  const location = useLocation();
+  console.log(location);
+
   return (
-    <div id="menu">
-      <List style={{ display: "flex", flexDirection: "row", padding: 0 }}>
-        {navItems.map((item) => (
-          <ListItem key={item.title}>
-            <Link to={item.slug}>
-              <Button variant="contained" color="primary">
-                {item.title}
-              </Button>
-            </Link>
-          </ListItem>
-        ))}
-      </List>
+    <div id="menu" className={classes.horizontal}>
+      {navItems.map((item) => (
+        <Link to={item.slug} key={item.title} className={classes.link}>
+          <Button
+            variant="contained"
+            disableElevation
+            color={item.slug === location.pathname ? "primary" : "secondary"}
+            className={clsx(classes.menuButton, {
+              [classes.hoverPrimaryMain]: item.slug === location.pathname,
+              [classes.menuButtonHoverDark]: item.slug !== location.pathname,
+            })}
+          >
+            {item.title}
+          </Button>
+        </Link>
+      ))}
     </div>
   );
 };

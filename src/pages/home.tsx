@@ -1,22 +1,76 @@
-import React from 'react';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Paper, Typography } from "@material-ui/core";
 
-import Layout from 'components/Layout';
-import SEO from 'components/SEO';
+const useStyles = makeStyles((theme) => ({
+  fontColor: {
+    color: theme.palette.getContrastText(theme.palette.background.paper),
+  },
+  parentGrid: {
+    marginTop: theme.spacing(2),
+  },
+  content1: {
+    padding: theme.spacing(2),
+  },
+}));
 
 const IndexPage: React.FC = () => {
+  const classes = useStyles();
   return (
-    <Layout>
-      <SEO title="Home" />
-      <div className="text-center">
-        <h1 className="text-2xl font-semibold">Gatsby Redux-Toolkit Starter</h1>
-        <p className="mt-5">
-          This is a starter for <span className="font-semibold">Gatsby</span> websites using{' '}
-          <span className="font-semibold">Redux-Toolkit</span>, <span className="font-semibold">Typescript</span>,{' '}
-          <span className="font-semibold">Styled Components</span>, <span className="font-semibold">Talwind CSS</span> &{' '}
-          <span className="font-semibold">React Font Awesome</span>.
-        </p>
-      </div>
-    </Layout>
+    <div id="Home">
+      <Grid container className={classes.parentGrid} spacing={2}>
+        <Grid item id="mainPhotos" xs={12}>
+          <Paper className={classes.content1}>
+            <Typography className={classes.fontColor}>メイン写真</Typography>
+            <br />
+            <br />
+            <br />
+          </Paper>
+        </Grid>
+        <Grid item id="subPhotos" xs={12}>
+          <Paper className={classes.content1}>
+            <Typography className={classes.fontColor}>サブ写真</Typography>
+            <br />
+            <br />
+            <br />
+          </Paper>
+        </Grid>
+        <Grid item id="updates" xs={12} sm={6}>
+          <Paper className={classes.content1}>
+            <Typography className={classes.fontColor}>
+              あいさつと更新履歴
+            </Typography>
+            <br />
+            <br />
+            <br />
+          </Paper>
+        </Grid>
+        <Grid item id="twitter" xs={12} sm={6}>
+          <Paper className={classes.content1}>
+            <Typography className={classes.fontColor}>ついった</Typography>
+            <br />
+            <br />
+            <br />
+          </Paper>
+        </Grid>
+        <Grid item id="events" xs={12} sm={6}>
+          <Paper className={classes.content1}>
+            <Typography className={classes.fontColor}>イベント</Typography>
+            <br />
+            <br />
+            <br />
+          </Paper>
+        </Grid>
+        <Grid item id="news" xs={12} sm={6}>
+          <Paper className={classes.content1}>
+            <Typography className={classes.fontColor}>ニュース</Typography>
+            <br />
+            <br />
+            <br />
+          </Paper>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 

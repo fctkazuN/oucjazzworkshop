@@ -1,52 +1,24 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-
-import Header from "components/Header";
-import Footer from "components/Footer";
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import { connect } from "react-redux";
-import { RootState } from "state/store";
-import * as colorTheme from "assets/styles/theme";
-import { ThemeType } from "../../state/slices/colorThemeSlice";
-import { makeStyles } from "@material-ui/core/styles";
+import { RootState } from "../../state/store";
+import { ThemeMode } from "../../state/slices/colorThemeSlice";
+import * as colorTheme from "../../assets/styles/theme";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.default,
-  },
-}));
+import PageComponent from "./pageComponent";
 
-type Props = {
-  themeMode: ThemeType;
-  children: React.ReactNode;
-};
-
-/**
- * Layout component
- *
- * @param {Props} props
- */
-const Layout: React.FC<Props> = ({ themeMode, children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
-  const classes = useStyles();
-
+const Layout: React.FC<Props> = ({ children, themeMode }) => {
   return (
     <ThemeProvider theme={colorTheme[themeMode]}>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div className={classes.root}>{children}</div>
-      <Footer />
+      <PageComponent children={children} />
     </ThemeProvider>
   );
+};
+
+type Props = {
+  children: React.ReactNode;
+  themeMode: ThemeMode;
 };
 
 const mapStateProps = (state: RootState) => ({

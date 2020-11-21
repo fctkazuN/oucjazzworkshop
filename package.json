@@ -1,60 +1,54 @@
 {
-  "name": "oucjazz",
-  "private": true,
-  "description": "OUC Jazz Workshop's Web Site",
+  "name": "oucjazzworkshop",
   "version": "0.1.0",
-  "author": "KAERU",
+  "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "@reduxjs/toolkit": "^1.3.5",
-    "gatsby": "^2.25.3",
-    "gatsby-image": "^2.4.0",
-    "gatsby-plugin-manifest": "^2.4.1",
-    "gatsby-plugin-offline": "^3.2.0",
-    "gatsby-plugin-react-helmet-async": "^1.1.0",
-    "gatsby-plugin-s3": "^0.3.8",
-    "gatsby-plugin-sharp": "^2.7.1",
-    "gatsby-plugin-typescript": "^2.4.0",
-    "gatsby-source-filesystem": "^2.3.0",
-    "gatsby-transformer-sharp": "^2.5.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-helmet-async": "^1.0.7",
-    "react-redux": "^7.2.0"
+    "@reduxjs/toolkit": "^1.4.0",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.0",
+    "typescript": "^4.1.2",
+    "web-vitals": "^0.2.4"
   },
   "devDependencies": {
-    "@microsoft/tsdoc": "^0.12.19",
-    "@types/node": "^13.13.4",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.7",
-    "@types/react-helmet": "^5.0.15",
-    "@types/react-redux": "^7.1.7",
-    "prettier": "^2.0.5"
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.19.6",
+    "@types/react": "^16.14.1",
+    "@types/react-dom": "^16.9.10",
+    "@types/react-redux": "^7.1.11",
+    "@types/react-router": "^5.1.8",
+    "@types/react-router-dom": "^5.1.6"
   },
-  "keywords": [
-    "gatsby",
-    "typescript",
-    "redux",
-    "redux-toolkit",
-    "styled-components"
-  ],
-  "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "npm run build && gatsby-plugin-s3 deploy"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/SaimirKapaj/gatsby-redux-toolkit-typescript-starter"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

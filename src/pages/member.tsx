@@ -1,18 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import Layout from 'components/Layout';
-import SEO from 'components/SEO';
-
-const AboutPage: React.FC = () => {
+const MemberPage: React.FC = () => {
   return (
-    <Layout>
-      <SEO title="About" />
+    <div>
       <div className="text-center">
-        <h1 className="text-2xl font-semibold">About</h1>
+        <h1 className="text-2xl font-semibold">Member</h1>
         <p className="mt-5">Welcome to About Page.</p>
       </div>
-    </Layout>
+    </div>
   );
 };
 
-export default AboutPage;
+export default MemberPage;

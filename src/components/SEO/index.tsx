@@ -1,97 +1,86 @@
 import React from "react";
-import { Helmet, HelmetProvider } from "react-helmet-async";
-import { useStaticQuery, graphql } from "gatsby";
-
-type Meta =
-  | {
-      name: string;
-      content: any;
-    }
-  | {
-      property: string;
-      content: any;
-    };
-
-interface Props {
-  description?: string;
-  lang?: string;
-  meta?: Meta[];
-  title: string;
+export default function seo() {
+  return <div />;
 }
+// import { Helmet, HelmetProvider } from "react-helmet-async";
 
-/**
- * SEO component
- *
- * @param {Props} props
- */
-const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  );
+// type Meta =
+//   | {
+//       name: string;
+//       content: any;
+//     }
+//   | {
+//       property: string;
+//       content: any;
+//     };
 
-  const metaDescription = description || site.siteMetadata.description;
+// interface Props {
+//   description?: string;
+//   lang?: string;
+//   meta?: Meta[];
+//   title: string;
+// }
 
-  return (
-    <HelmetProvider>
-      <Helmet
-        htmlAttributes={{
-          lang,
-        }}
-        title={title}
-        titleTemplate={`%s | ${site.siteMetadata.title}`}
-        meta={[
-          {
-            name: `description`,
-            content: metaDescription,
-          },
-          {
-            property: `og:title`,
-            content: title,
-          },
-          {
-            property: `og:description`,
-            content: metaDescription,
-          },
-          {
-            property: `og:type`,
-            content: `website`,
-          },
-          {
-            name: `twitter:card`,
-            content: `summary`,
-          },
-          {
-            name: `twitter:creator`,
-            content: site.siteMetadata.author,
-          },
-          {
-            name: `twitter:title`,
-            content: title,
-          },
-          {
-            name: `twitter:description`,
-            content: metaDescription,
-          },
-        ].concat(meta!)}
-      />
-    </HelmetProvider>
-  );
-};
+// /**
+//  * SEO component
+//  *
+//  * @param {Props} props
+//  */
+// const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [] as Meta[],
-  description: ``,
-};
+//   const metaDescription = description || site.siteMetadata.description;
 
-export default SEO;
+//   return (
+//     <HelmetProvider>
+//       <Helmet
+//         htmlAttributes={{
+//           lang,
+//         }}
+//         title={title}
+//         titleTemplate={`%s | ${site.siteMetadata.title}`}
+//         meta={[
+//           {
+//             name: `description`,
+//             content: metaDescription,
+//           },
+//           {
+//             property: `og:title`,
+//             content: title,
+//           },
+//           {
+//             property: `og:description`,
+//             content: metaDescription,
+//           },
+//           {
+//             property: `og:type`,
+//             content: `website`,
+//           },
+//           {
+//             name: `twitter:card`,
+//             content: `summary`,
+//           },
+//           {
+//             name: `twitter:creator`,
+//             content: site.siteMetadata.author,
+//           },
+//           {
+//             name: `twitter:title`,
+//             content: title,
+//           },
+//           {
+//             name: `twitter:description`,
+//             content: metaDescription,
+//           },
+//         ].concat(meta!)}
+//       />
+//     </HelmetProvider>
+//   );
+// };
+
+// SEO.defaultProps = {
+//   lang: `en`,
+//   meta: [] as Meta[],
+//   description: ``,
+// };
+
+// export default SEO;

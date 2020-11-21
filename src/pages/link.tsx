@@ -1,18 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import Layout from 'components/Layout';
-import SEO from 'components/SEO';
-
-const BlogPage: React.FC = () => {
+const LinkPage: React.FC = () => {
   return (
-    <Layout>
-      <SEO title="Blog" />
+    <div>
       <div className="text-center">
-        <h1 className="text-2xl font-semibold">Blog</h1>
+        <h1 className="text-2xl font-semibold">Link</h1>
         <p className="mt-5">Welcome to Blog Page.</p>
       </div>
-    </Layout>
+    </div>
   );
 };
 
-export default BlogPage;
+export default LinkPage;

@@ -1,32 +1,32 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import store from 'state/store';
-import { Thunk, Dispatch } from 'state/store';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import store from "../store";
+import { Thunk, Dispatch } from "../store";
 
 export type ThemeType = ThemeMode.LIGHT | ThemeMode.DARK;
 
 export enum ThemeMode {
-  LIGHT = 'light',
-  DARK = 'dark'
+  LIGHT = "light",
+  DARK = "dark",
 }
 
-interface UIState {
+type ColorTheme = {
   themeMode: ThemeMode;
-}
+};
 
-const initialState: UIState = {
-  themeMode: ThemeMode.DARK
+const initialState: ColorTheme = {
+  themeMode: ThemeMode.DARK,
 };
 
 // Slice
 const colorThemeSlice = createSlice({
-  name: 'colorTheme',
+  name: "colorTheme",
   initialState,
   reducers: {
     setThemeMode: (state, action: PayloadAction<ThemeMode>) => {
       const { payload } = action;
       state.themeMode = payload;
-    }
-  }
+    },
+  },
 });
 
 // Reducers

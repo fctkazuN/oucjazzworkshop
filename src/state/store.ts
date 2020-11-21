@@ -1,14 +1,14 @@
-import { configureStore, combineReducers, Action } from '@reduxjs/toolkit';
-import { ThunkAction } from 'redux-thunk';
+import { configureStore, combineReducers, Action } from "@reduxjs/toolkit";
+import { ThunkAction } from "redux-thunk";
 
-import colorThemeReducer from 'state/slices/colorThemeSlice';
+import colorThemeReducer from "./slices/colorThemeSlice";
 
 const rootReducer = combineReducers({
-  colorTheme: colorThemeReducer
+  colorTheme: colorThemeReducer,
 });
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
