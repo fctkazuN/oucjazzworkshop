@@ -50,15 +50,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
   },
   leftSpan: {
+    justifyContent: "flex-start",
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
   },
   rightSpan: {
+    justifyContent: "flex-end",
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
   photoScrollIcon: {
-    fontSize: theme.spacing(10),
+    // fontSize: 32,
     color: theme.palette.text.secondary,
     "&:hover": {
       color: "#fff",
@@ -82,7 +84,7 @@ const IndexPage: React.FC = () => {
     setDispPhotoId((prev) => (prev < mainPhotos.length - 1 ? prev + 1 : 0));
   };
   const handleMainPhotoPrev = () => {
-    setDispPhotoId((prev) => (1 < prev ? prev - 1 : mainPhotos.length - 1));
+    setDispPhotoId((prev) => (0 < prev ? prev - 1 : mainPhotos.length - 1));
   };
 
   return (
@@ -112,13 +114,19 @@ const IndexPage: React.FC = () => {
                     className={classes.leftSpan}
                     onClick={handleMainPhotoPrev}
                   >
-                    <ChevronLeftIcon className={classes.photoScrollIcon} />
+                    <ChevronLeftIcon
+                      className={classes.photoScrollIcon}
+                      style={{ fontSize: isLarge ? 64 : 32 }}
+                    />
                   </span>
                   <span
                     className={classes.rightSpan}
                     onClick={handleMainPhotoNext}
                   >
-                    <ChevronRightIcon className={classes.photoScrollIcon} />
+                    <ChevronRightIcon
+                      className={classes.photoScrollIcon}
+                      style={{ fontSize: isLarge ? 64 : 32 }}
+                    />
                   </span>
                 </div>
               </Fade>
