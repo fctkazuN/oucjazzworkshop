@@ -7,11 +7,13 @@ export const light = createMuiTheme({
       main: red[500],
       light: red[400],
       dark: red[600],
+      contrastText: "#fff",
     },
     secondary: {
       main: grey[900],
       light: grey[800],
       dark: "#000000",
+      contrastText: "#fff",
     },
     background: {
       default: grey[200],
@@ -26,15 +28,21 @@ export const dark = createMuiTheme({
       main: red[500],
       light: red[300],
       dark: red[900],
+      contrastText: "#fff",
     },
     secondary: {
       main: grey[900],
       light: grey[800],
       dark: "#000000",
+      contrastText: "#fff",
     },
     background: {
       default: "#000",
       paper: grey[900],
+    },
+    text: {
+      primary: "#fff",
+      secondary: grey[400],
     },
   },
 });

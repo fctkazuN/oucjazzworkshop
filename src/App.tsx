@@ -6,7 +6,7 @@ import Member from "./pages/member";
 import Schedule from "./pages/schedule";
 import Contact from "./pages/contact";
 import Link from "./pages/link";
-import { navItems } from "./components/Header/MainNav";
+import { navItems } from "./assets/constants/pageNavigations";
 
 const App = () => {
   const history = useHistory();
