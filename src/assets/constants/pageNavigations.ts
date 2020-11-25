@@ -15,8 +15,8 @@ export const navItems: NavItem[] = [
     slug: "/member/",
   },
   {
-    title: "Live",
-    slug: "/live/",
+    title: "Schedule",
+    slug: "/schedule/",
   },
   {
     title: "Contact",

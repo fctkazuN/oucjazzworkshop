@@ -42,6 +42,7 @@ const MainNavLg: React.FC = () => {
     <div id="menu" className={classes.horizontal}>
       {navItems.map((item) => (
         <Button
+          key={item.slug}
           variant="contained"
           disableElevation
           color={item.slug === location.pathname ? "primary" : "secondary"}
