@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import clsx from "clsx";
+import { Timeline } from "react-twitter-widgets";
 import { makeStyles } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery/useMediaQuery";
 import Grid from "@material-ui/core/Grid";
@@ -220,7 +220,6 @@ const IndexPage: React.FC = () => {
   const [focus, setFocus] = useState<string>("");
   const isLarge = useMediaQuery("(min-width:600px)");
   const [dispMainPhotoId, setDispMainPhotoId] = useState(0);
-  const [intervalId, setIntervalId] = useState<any>();
 
   // マウスフォーカス管理
   const handleFocus = (name = "") => () => {
@@ -362,50 +361,83 @@ const IndexPage: React.FC = () => {
           </Paper>
         </Grid>
         <Grid item id="updates" xs={12} sm={8}>
-          <Paper className={classes.content1}>
+          <Paper className={classes.content1} id="information">
             <Typography variant="h6" className={classes.subTitle}>
               Infomation
             </Typography>
             <Divider variant="fullWidth" className={classes.fatDivider} />
-            <div className={classes.content1}>
-              <Typography variant="subtitle2" className={classes.multiline}>
-                {
-                  "小樽商科大学ジャズ研究会のホームページにようこそ！\n商大ジャズ研では毎週火曜日に行われている定期セッションに加え、札幌、小樽市内を中心にライブ活動をさせて頂いています。その他にも学校祭出店、夏合宿、定期演奏会など楽しいイベントが盛り沢山です！\nまた、道内他大学のジャズ研との交流も深く一緒にライブ活動などを行っています。\n入部希望、また演奏依頼などありましたらこちらのフォームからお気軽にお問い合わせください。"
-                }
-              </Typography>
-            </div>
-            <Divider variant="fullWidth" className={classes.dottedDivider} />
-            <div className={classes.content1}>
-              <Typography variant="subtitle1" className={classes.subTitle}>
-                What's New ?
-              </Typography>
-              <List disablePadding>
-                {[{ date: "20.12.1", text: "ホームページリニューアル" }].map(
-                  (row) => (
-                    <ListItem dense>
-                      <Typography
-                        align="left"
-                        variant="subtitle2"
-                        style={{ minWidth: 80 }}
-                      >
-                        {row.date}
-                      </Typography>
-                      <Typography align="left" variant="subtitle2">
-                        {row.text}
-                      </Typography>
-                    </ListItem>
-                  )
-                )}
-              </List>
+            <div
+              style={{ height: 300 + 6 /* TODO Twitterの高さと連動させる */ }}
+            >
+              <div className={classes.content1}>
+                <Typography variant="subtitle2" className={classes.multiline}>
+                  {
+                    "小樽商科大学ジャズ研究会のホームページにようこそ！\n商大ジャズ研では毎週火曜日に行われている定期セッションに加え、札幌、小樽市内を中心にライブ活動をさせて頂いています。その他にも学校祭出店、夏合宿、定期演奏会など楽しいイベントが盛り沢山です！\nまた、道内他大学のジャズ研との交流も深く一緒にライブ活動などを行っています。\n入部希望、また演奏依頼などありましたらこちらのフォームからお気軽にお問い合わせください。"
+                  }
+                </Typography>
+              </div>
+              <Divider variant="fullWidth" className={classes.dottedDivider} />
+              <div className={classes.content1}>
+                <Typography variant="subtitle1" className={classes.subTitle}>
+                  What's New ?
+                </Typography>
+                <List disablePadding>
+                  {[{ date: "20.12.1", text: "ホームページリニューアル" }].map(
+                    (row) => (
+                      <ListItem dense key={row.date}>
+                        <Typography
+                          align="left"
+                          variant="subtitle2"
+                          style={{ minWidth: 80 }}
+                        >
+                          {row.date}
+                        </Typography>
+                        <Typography align="left" variant="subtitle2">
+                          {row.text}
+                        </Typography>
+                      </ListItem>
+                    )
+                  )}
+                </List>
+              </div>
             </div>
           </Paper>
         </Grid>
         <Grid item id="twitter" xs={12} sm={4}>
           <Paper className={classes.content1}>
-            <Typography className={classes.fontColor}>ついった</Typography>
-            <br />
-            <br />
-            <br />
+            <Typography variant="h6" className={classes.subTitle}>
+              Twitter
+            </Typography>
+            <Divider variant="fullWidth" className={classes.fatDivider} />
+            <Timeline
+              dataSource={{
+                sourceType: "https://twitter.com/ouc_jazz?ref_src=twsrc%5Etfw",
+                screenName: "ouc_jazz",
+              }}
+              options={{
+                height: 300,
+                theme: "dark",
+                chrome: "nofooter",
+              }}
+            />
+            {/* 
+            <a
+              data-lang="ja"
+              data-width="220"
+              data-height="200"
+              data-theme="dark"
+              href="https://twitter.com/ouc_jazz?ref_src=twsrc%5Etfw"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Tweets by ouc_jazz
+            </a>{" "}
+            <script
+              async
+              src="https://platform.twitter.com/widgets.js"
+              charset="utf-8"
+            ></script>
+             */}
           </Paper>
         </Grid>
         <Grid item id="events" xs={12} sm={6}>

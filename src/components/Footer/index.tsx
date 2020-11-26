@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Typography } from "@material-ui/core";
 import { useLocation } from "react-router";
+import { Follow } from "react-twitter-widgets";
 
 /**
  * Footer component
@@ -25,7 +26,9 @@ const Footer = () => {
       <Typography variant="caption" align="left" color="textSecondary">
         © 2020 Otaru University of Commerce Jazz Workshop.
       </Typography>
-      <div id="twitter-follow-button?" />
+      <div id="twitter-follow-button?">
+        <Follow username="ouc_jazz" options={{ lang: "ja" }} />
+      </div>
       <div id="analytics" />
     </Toolbar>
   );
