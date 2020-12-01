@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useLocation, useHistory, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Member from "./pages/member";
 import Schedule from "./pages/schedule";
 import Contact from "./pages/contact";
 import Link from "./pages/link";
 import { navItems } from "./assets/constants/pageNavigations";
+import useMediaQuery from "@material-ui/core/useMediaQuery/useMediaQuery";
 
 const App = () => {
   const history = useHistory();
   const location = useLocation();
+  const sm = useMediaQuery("(min-width:600px)");
 
   useEffect(() => {
     if (location && !navItems.some((item) => item.slug === location.pathname)) {
@@ -22,7 +24,7 @@ const App = () => {
   return (
     <Layout>
       <Route exact path="/">
-        <Home />
+        <Home sm={sm} />
       </Route>
       <Route exact path="/member">
         <Member />

@@ -2,9 +2,15 @@ import { configureStore, combineReducers, Action } from "@reduxjs/toolkit";
 import { ThunkAction } from "redux-thunk";
 
 import colorThemeReducer from "./slices/colorThemeSlice";
+import eventsReducer from "./slices/eventsSlice";
+import focusReducer from "./slices/focusSlice";
+import memberReducer from "./slices/memberSlice";
 
 const rootReducer = combineReducers({
   colorTheme: colorThemeReducer,
+  events: eventsReducer,
+  focus: focusReducer,
+  member: memberReducer,
 });
 
 const store = configureStore({

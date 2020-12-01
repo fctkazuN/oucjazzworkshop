@@ -1,9 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type EventType = {};
+export type EventType = {
+  start: string;
+  title: string;
+  location: string;
+  description: string;
+};
 
 type State = {
-  events: any[];
+  events: EventType[];
 };
 
 const initialState: State = {
