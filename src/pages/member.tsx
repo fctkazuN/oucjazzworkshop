@@ -174,7 +174,6 @@ const MemberPage: React.FC<Props> = (props) => {
           </Paper>
         </Grid>
       </Grid>
-      <br />
     </div>
   );
 };

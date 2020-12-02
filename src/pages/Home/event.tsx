@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     width: "50%",
   },
+  eventListItemAction: {
+    top: "0%",
+  },
   dottedDivider: {
     border: 0,
     borderTop: 2,
@@ -70,7 +73,7 @@ const EventComponent: React.FC<Props> = (props) => {
 
   // 最初に開いた一度だけ動く
   useEffect(() => {
-    if (props.events) {
+    if (!props.events.length) {
       // GASと通信してイベント情報を取得する
       getSchedule({
         success: (resp: EventType[]) => {
@@ -117,7 +120,7 @@ const EventComponent: React.FC<Props> = (props) => {
                     }
                   />
                   {event.description.match(/\/\w*\//) ? (
-                    <ListItemSecondaryAction>
+                    <ListItemSecondaryAction style={{ top: "25%" }}>
                       <Button
                         variant="contained"
                         color="primary"

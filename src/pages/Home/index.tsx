@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   content1: {
     padding: theme.spacing(2),
   },
+  content2: {
+    padding: theme.spacing(2, 1),
+  },
   fatDivider: {
     padding: 2,
     backgroundColor: theme.palette.primary.main,
@@ -62,7 +65,7 @@ const HomePage: React.FC<Props> = (props) => {
             </Typography>
             <Divider variant="fullWidth" className={classes.fatDivider} />
             <div>
-              <div className={classes.content1}>
+              <div className={classes.content2}>
                 <Typography variant="body2" className={classes.multiline}>
                   {
                     "小樽商科大学ジャズ研究会のホームページにようこそ！\n商大ジャズ研では毎週火曜日に行われている定期セッションに加え、札幌、小樽市内を中心にライブ活動をさせて頂いています。その他にも学校祭出店、夏合宿、定期演奏会など楽しいイベントが盛り沢山です！\nまた、道内他大学のジャズ研との交流も深く一緒にライブ活動などを行っています。\n入部希望、また演奏依頼などありましたらこちらのフォームからお気軽にお問い合わせください。"
@@ -70,7 +73,7 @@ const HomePage: React.FC<Props> = (props) => {
                 </Typography>
               </div>
               <Divider variant="fullWidth" className={classes.dottedDivider} />
-              <div className={classes.content1}>
+              <div className={classes.content2}>
                 <Typography variant="subtitle1" className={classes.subTitle}>
                   What's New ?
                 </Typography>

@@ -46,6 +46,7 @@ const PageComponent: React.FC<Props> = ({ children }) => {
       <Container id="content" maxWidth="md">
         <div>{children}</div>
       </Container>
+      <br />
       <Footer />
     </div>
   );

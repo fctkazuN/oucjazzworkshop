@@ -45,6 +45,7 @@ const MainNavSm: React.FC<Props> = ({ setOpenDrawer }) => {
 
   const handleNavButtonClick = (slug: string) => () => {
     history.push(slug);
+    setOpenDrawer(false);
   };
 
   return (
