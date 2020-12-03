@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -35,7 +34,7 @@ const Footer: React.FC = () => {
       id="Footer"
       disableGutters
       className={classes.vertical}
-      // style={{ position: isSticky ? "absolute" : "static", bottom: 0, left: 0 }}
+      style={{ position: isSticky ? "absolute" : "static", bottom: 0, left: 0 }}
     >
       <div>
         <Follow username="ouc_jazz" options={{ lang: "ja" }} />

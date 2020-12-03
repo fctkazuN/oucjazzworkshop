@@ -64,35 +64,35 @@ const sunStartJa = [
   weekdays.sat.ja,
 ];
 
-const sunStartEn = [
-  weekdays.sun.en,
-  weekdays.mon.en,
-  weekdays.tue.en,
-  weekdays.wed.en,
-  weekdays.thu.en,
-  weekdays.fri.en,
-  weekdays.sat.en,
-];
+// const sunStartEn = [
+//   weekdays.sun.en,
+//   weekdays.mon.en,
+//   weekdays.tue.en,
+//   weekdays.wed.en,
+//   weekdays.thu.en,
+//   weekdays.fri.en,
+//   weekdays.sat.en,
+// ];
 
-const monStartJa = [
-  weekdays.mon.ja,
-  weekdays.tue.ja,
-  weekdays.wed.ja,
-  weekdays.thu.ja,
-  weekdays.fri.ja,
-  weekdays.sat.ja,
-  weekdays.sun.ja,
-];
+// const monStartJa = [
+//   weekdays.mon.ja,
+//   weekdays.tue.ja,
+//   weekdays.wed.ja,
+//   weekdays.thu.ja,
+//   weekdays.fri.ja,
+//   weekdays.sat.ja,
+//   weekdays.sun.ja,
+// ];
 
-const monStartEn = [
-  weekdays.mon.en,
-  weekdays.tue.en,
-  weekdays.wed.en,
-  weekdays.thu.en,
-  weekdays.fri.en,
-  weekdays.sat.en,
-  weekdays.sun.en,
-];
+// const monStartEn = [
+//   weekdays.mon.en,
+//   weekdays.tue.en,
+//   weekdays.wed.en,
+//   weekdays.thu.en,
+//   weekdays.fri.en,
+//   weekdays.sat.en,
+//   weekdays.sun.en,
+// ];
 
 const ScheduleLg: React.FC<Props> = ({ month, events }) => {
   const classes = useStyles();
