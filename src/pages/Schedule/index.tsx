@@ -8,9 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 import { connect } from "react-redux";
@@ -18,6 +15,8 @@ import { RootState } from "../../state/store";
 import { EventType, setEvents } from "../../state/slices/eventsSlice";
 
 import getSchedule from "../../components/Customs/getScheduleApi";
+import ScheduleLg from "./scheduleLg";
+import ScheduleSm from "./scheduleSm";
 
 const useStyles = makeStyles((theme) => ({
   fontColor: {
@@ -134,62 +133,40 @@ const SchedulePageSm: React.FC<Props> = (props) => {
               className={classes.fatDivider}
               style={{ width: "50%" }}
             />
-            {/* TODO LgとSmのコンポーネントはここからわける */}
-            <List>
-              <div className={classes.horizontal}>
-                {dispMonth !== thisMonth ? (
-                  <Button
-                    onClick={handleTodayButton}
-                    className={classes.todayButton}
-                  >
-                    今月
-                  </Button>
-                ) : (
-                  <span className={classes.buttonSpace} />
-                )}
-                <div className={classes.horizontal}>
-                  <IconButton
-                    onClick={handleMonthPrev}
-                    className={classes.iconButton}
-                  >
-                    <ChevronLeftIcon className={classes.fontColor} />
-                  </IconButton>
-                  <Typography>{dispMonth}</Typography>
-                  <IconButton
-                    onClick={handleMonthNext}
-                    className={clsx(
-                      classes.chevronRightIcon,
-                      classes.iconButton
-                    )}
-                  >
-                    <ChevronLeftIcon className={classes.fontColor} />
-                  </IconButton>
-                </div>
-                <span className={classes.buttonSpace} />
-              </div>
-              {dispEvents.length ? (
-                dispEvents.map((event) => (
-                  <div key={event.title}>
-                    {/* TODO クリックでdescription表示？ */}
-                    <ListItem dense className={classes.outline}>
-                      <ListItemText
-                        primary={dayjs(event.start).format("M/D(ddd) H:mm~")}
-                        primaryTypographyProps={{ variant: "body2" }}
-                      />
-                    </ListItem>
-                    <ListItem dense className={classes.outline}>
-                      <ListItemText
-                        primary={event.title}
-                        primaryTypographyProps={{ variant: "subtitle1" }}
-                        secondary={event.location}
-                      />
-                    </ListItem>
-                  </div>
-                ))
+            {/* TODO smを条件に、表示を大きくする */}
+            <div className={classes.horizontal}>
+              {dispMonth !== thisMonth ? (
+                <Button
+                  onClick={handleTodayButton}
+                  className={classes.todayButton}
+                >
+                  今月
+                </Button>
               ) : (
-                <Typography>{dispMonth + "の予定はありません"}</Typography>
+                <span className={classes.buttonSpace} />
               )}
-            </List>
+              <div className={classes.horizontal}>
+                <IconButton
+                  onClick={handleMonthPrev}
+                  className={classes.iconButton}
+                >
+                  <ChevronLeftIcon className={classes.fontColor} />
+                </IconButton>
+                <Typography>{dispMonth}</Typography>
+                <IconButton
+                  onClick={handleMonthNext}
+                  className={clsx(classes.chevronRightIcon, classes.iconButton)}
+                >
+                  <ChevronLeftIcon className={classes.fontColor} />
+                </IconButton>
+              </div>
+              <span className={classes.buttonSpace} />
+            </div>
+            {props.sm ? (
+              <ScheduleLg events={dispEvents} month={dispMonth} />
+            ) : (
+              <ScheduleSm events={dispEvents} month={dispMonth} />
+            )}
           </Paper>
         </Grid>
       </Grid>
@@ -198,6 +175,7 @@ const SchedulePageSm: React.FC<Props> = (props) => {
 };
 
 type Props = {
+  sm: boolean;
   events: EventType[];
   setEvents: React.Dispatch<EventType[]>;
 };

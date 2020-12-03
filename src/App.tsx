@@ -3,12 +3,11 @@ import { useLocation, useHistory, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Member from "./pages/member";
-import ScheduleSm from "./pages/scheduleSm";
-import ScheduleLg from "./pages/scheduleLg";
+import Schedule from "./pages/Schedule";
 import Contact from "./pages/contact";
 import Link from "./pages/link";
 import { navItems } from "./assets/constants/pageNavigations";
-import useMediaQuery from "@material-ui/core/useMediaQuery/useMediaQuery";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const App = () => {
   const history = useHistory();
@@ -31,7 +30,7 @@ const App = () => {
         <Member />
       </Route>
       <Route exact path="/schedule">
-        {sm ? <ScheduleLg /> : <ScheduleSm />}
+        <Schedule sm={sm} />
       </Route>
       <Route exact path="/contact">
         <Contact />
