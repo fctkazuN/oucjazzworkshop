@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { RootState } from "../../state/store";
-import { setFocus } from "../../state/slices/focusSlice";
-
+import { makeStyles } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Fade from "@material-ui/core/Fade";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
+import { connect } from "react-redux";
+import { RootState } from "../../state/store";
+import { setFocus } from "../../state/slices/focusSlice";
+
 import mainPhoto_1 from "../../assets/images/mainPhotos/1.jpg";
 import mainPhoto_2 from "../../assets/images/mainPhotos/2.jpg";
 import mainPhoto_3 from "../../assets/images/mainPhotos/3.jpg";
-import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   mainPhotos: {
@@ -19,11 +19,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    position: "relative",
   },
   mainPhotosNav: {
     height: "100%",
     display: "flex",
     justifyContent: "space-between",
+    position: "absolute",
+    top: 0,
+    left: 0,
     "& > *": {
       width: "8%",
     },
@@ -66,6 +70,7 @@ const mainPhotos = [mainPhoto_1, mainPhoto_2, mainPhoto_3];
 const MainPhotos: React.FC<Props> = (props) => {
   const classes = useStyles();
   const [dispMainPhotoId, setDispMainPhotoId] = useState(0);
+  const [fading, setFading] = useState(false);
 
   const handleFocus = (name: string) => () => {
     props.setFocus(name);
@@ -73,12 +78,26 @@ const MainPhotos: React.FC<Props> = (props) => {
 
   // メイン画像変更管理
   const handleMainPhotoNext = () => {
-    setDispMainPhotoId((prev) => (prev < mainPhotos.length - 1 ? prev + 1 : 0));
+    if (!fading) {
+      setFading(true);
+      setTimeout(() => {
+        setFading(false);
+        setDispMainPhotoId((prev) =>
+          prev < mainPhotos.length - 1 ? prev + 1 : 0
+        );
+      }, 1000);
+    }
   };
   const handleMainPhotoPrev = () => {
-    setDispMainPhotoId((prev) =>
-      1 <= prev ? prev - 1 : mainPhotos.length - 1
-    );
+    if (!fading) {
+      setFading(true);
+      setTimeout(() => {
+        setFading(false);
+        setDispMainPhotoId((prev) =>
+          1 <= prev ? prev - 1 : mainPhotos.length - 1
+        );
+      }, 1000);
+    }
   };
 
   return (
@@ -87,35 +106,60 @@ const MainPhotos: React.FC<Props> = (props) => {
       onMouseEnter={handleFocus("mainPhotos")}
       onMouseLeave={handleFocus("")}
     >
-      <div
-        id="photo"
-        className={classes.photo}
+      <img
+        alt="メイン写真"
+        src={mainPhotos[dispMainPhotoId]}
+        id="mainPhoto1"
         style={{
           height:
             window.innerWidth > window.innerHeight
               ? window.innerHeight * 0.5
               : window.innerWidth * 0.4,
           width: "100%",
-          backgroundImage: `url(${mainPhotos[dispMainPhotoId]})`,
+          objectFit: "cover",
         }}
+      />
+      <img
+        alt="メイン写真"
+        src={
+          dispMainPhotoId < mainPhotos.length - 1
+            ? mainPhotos[dispMainPhotoId + 1]
+            : mainPhotos[0]
+        }
+        id="mainPhoto2"
+        style={{
+          height:
+            window.innerWidth > window.innerHeight
+              ? window.innerHeight * 0.5
+              : window.innerWidth * 0.4,
+          width: "100%",
+          objectFit: "cover",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          transition: fading ? "1s" : "0s",
+          opacity: fading ? 1 : 0,
+        }}
+      />
+      <Fade
+        in={props.focus === "mainPhotos" || !props.sm}
+        style={{ width: "100%" }}
       >
-        <Fade in={props.focus === "mainPhotos" || !props.sm}>
-          <div className={classes.mainPhotosNav}>
-            <span className={classes.leftSpan} onClick={handleMainPhotoPrev}>
-              <ChevronLeftIcon
-                className={classes.photoScrollIcon}
-                style={{ fontSize: props.sm ? 64 : 32 }}
-              />
-            </span>
-            <span className={classes.rightSpan} onClick={handleMainPhotoNext}>
-              <ChevronRightIcon
-                className={classes.photoScrollIcon}
-                style={{ fontSize: props.sm ? 64 : 32 }}
-              />
-            </span>
-          </div>
-        </Fade>
-      </div>
+        <div className={classes.mainPhotosNav}>
+          <span className={classes.leftSpan} onClick={handleMainPhotoPrev}>
+            <ChevronLeftIcon
+              className={classes.photoScrollIcon}
+              style={{ fontSize: props.sm ? 64 : 32 }}
+            />
+          </span>
+          <span className={classes.rightSpan} onClick={handleMainPhotoNext}>
+            <ChevronRightIcon
+              className={classes.photoScrollIcon}
+              style={{ fontSize: props.sm ? 64 : 32 }}
+            />
+          </span>
+        </div>
+      </Fade>
     </Paper>
   );
 };

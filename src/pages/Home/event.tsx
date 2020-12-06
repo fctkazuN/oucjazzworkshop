@@ -108,7 +108,7 @@ const EventComponent: React.FC<Props> = (props) => {
                     primary={event.title}
                     primaryTypographyProps={{ variant: "h6" }}
                     secondary={
-                      <div className={classes.multiline}>
+                      <span className={classes.multiline}>
                         <Typography variant="inherit">
                           {dayjs(event.start).format("YY/M/D H:mm～")}
                         </Typography>
@@ -116,7 +116,7 @@ const EventComponent: React.FC<Props> = (props) => {
                         <Typography variant="inherit">
                           {"@" + event.location}
                         </Typography>
-                      </div>
+                      </span>
                     }
                   />
                   {event.description.match(/\/\w*\//) ? (

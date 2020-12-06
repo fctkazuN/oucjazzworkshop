@@ -1,12 +1,14 @@
 import { configureStore, combineReducers, Action } from "@reduxjs/toolkit";
 import { ThunkAction } from "redux-thunk";
 
+import backdropReducer from "./slices/backdropSlice";
 import colorThemeReducer from "./slices/colorThemeSlice";
 import eventsReducer from "./slices/eventsSlice";
 import focusReducer from "./slices/focusSlice";
 import memberReducer from "./slices/memberSlice";
 
 const rootReducer = combineReducers({
+  backdrop: backdropReducer,
   colorTheme: colorThemeReducer,
   events: eventsReducer,
   focus: focusReducer,
