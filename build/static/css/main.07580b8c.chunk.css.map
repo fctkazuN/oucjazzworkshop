@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Customs/fireworkCanvas/fireworkCanvas.scss"],"names":[],"mappings":"AAAA,OACE,aAAc,CACd,WAAY,CACZ,YAAa","file":"main.07580b8c.chunk.css","sourcesContent":["canvas {\r\n  display: block;\r\n  width: 100vw;\r\n  height: 100vh;\r\n}\r\n"]}
