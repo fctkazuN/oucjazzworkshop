@@ -1,18 +1,23 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { isMobile } from "react-device-detect";
 
 import Header from "../Header";
 import Footer from "../Footer";
 // eslint-disable-next-line
 import backgroundImage from "../../assets/images/backgroundImage.png";
+import { CssBaseline } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   page: {
     // backgroundColor: theme.palette.background.default,
     minHeight: "100vh",
     height: "100%",
+    minWidth: "100%",
     backgroundColor: theme.palette.background.default,
+    display: "flex",
+    flexDirection: "column",
   },
   backGroundImage: {
     position: "absolute",
@@ -42,8 +47,14 @@ const PageComponent: React.FC<Props> = ({ children }) => {
         // src={BackgroundImage}
         className={classes.backGroundImage}
       /> */}
+      <CssBaseline />
       <Header />
-      <Container id="content" maxWidth="md">
+      <Container
+        id="content"
+        maxWidth="md"
+        disableGutters={isMobile}
+        style={{ minWidth: isMobile ? "none" : "960px" }}
+      >
         <div>{children}</div>
       </Container>
       <br />

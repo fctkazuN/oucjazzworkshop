@@ -111,10 +111,11 @@ const MainPhotos: React.FC<Props> = (props) => {
         src={mainPhotos[dispMainPhotoId]}
         id="mainPhoto1"
         style={{
-          height:
-            window.innerWidth > window.innerHeight
-              ? window.innerHeight * 0.5
-              : window.innerWidth * 0.4,
+          height: props.sm ? 154 : 380,
+          // height:
+          //   window.innerWidth > window.innerHeight
+          //     ? window.innerHeight * 0.5
+          //     : window.innerWidth * 0.4,
           width: "100%",
           objectFit: "cover",
         }}
@@ -128,10 +129,11 @@ const MainPhotos: React.FC<Props> = (props) => {
         }
         id="mainPhoto2"
         style={{
-          height:
-            window.innerWidth > window.innerHeight
-              ? window.innerHeight * 0.5
-              : window.innerWidth * 0.4,
+          height: props.sm ? 154 : 380,
+          // height:
+          //   window.innerWidth > window.innerHeight
+          //     ? window.innerHeight * 0.5
+          //     : window.innerWidth * 0.4,
           width: "100%",
           objectFit: "cover",
           position: "absolute",
@@ -142,20 +144,20 @@ const MainPhotos: React.FC<Props> = (props) => {
         }}
       />
       <Fade
-        in={props.focus === "mainPhotos" || !props.sm}
+        in={props.focus === "mainPhotos" || props.sm}
         style={{ width: "100%" }}
       >
         <div className={classes.mainPhotosNav}>
           <span className={classes.leftSpan} onClick={handleMainPhotoPrev}>
             <ChevronLeftIcon
               className={classes.photoScrollIcon}
-              style={{ fontSize: props.sm ? 64 : 32 }}
+              style={{ fontSize: props.sm ? 32 : 64 }}
             />
           </span>
           <span className={classes.rightSpan} onClick={handleMainPhotoNext}>
             <ChevronRightIcon
               className={classes.photoScrollIcon}
-              style={{ fontSize: props.sm ? 64 : 32 }}
+              style={{ fontSize: props.sm ? 32 : 64 }}
             />
           </span>
         </div>

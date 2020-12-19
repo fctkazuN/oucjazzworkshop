@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation, useHistory, Route, Switch } from "react-router-dom";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { isMobile } from "react-device-detect";
 import Layout from "./components/Layout";
 import HomePage from "./pages/Home";
 import MemberPage from "./pages/member";
@@ -16,7 +16,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const App: React.FC<Props> = ({ backdrop }) => {
   const history = useHistory();
   const location = useLocation();
-  const sm = useMediaQuery("(min-width:600px)");
 
   useEffect(() => {
     if (location && !navItems.some((item) => item.slug === location.pathname)) {
@@ -29,13 +28,13 @@ const App: React.FC<Props> = ({ backdrop }) => {
     <Layout>
       <Switch>
         <Route exact path="/">
-          <HomePage sm={sm} />
+          <HomePage sm={isMobile} />
         </Route>
         <Route exact path="/member">
           <MemberPage />
         </Route>
         <Route exact path="/schedule">
-          <SchedulePage sm={sm} />
+          <SchedulePage sm={isMobile} />
         </Route>
         <Route exact path="/contact">
           <ContactPage />
