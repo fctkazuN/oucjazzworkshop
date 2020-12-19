@@ -69,6 +69,7 @@ const EventComponent: React.FC<Props> = (props) => {
 
   const handleLinkEventPage = (slug: string) => () => {
     history.push(slug);
+    window.scroll(0, 0);
   };
 
   // 最初に開いた一度だけ動く

@@ -7,10 +7,14 @@ import Divider from "@material-ui/core/Divider";
 // import List from "@material-ui/core/List";
 // import ListItem from "@material-ui/core/ListItem";
 
-import pyuta from "../assets/images/temp/ぴゅ.jpg";
-import pashi from "../assets/images/temp/ぱーしー.jpg";
-import bene from "../assets/images/temp/べね.jpg";
-import ikemen from "../assets/images/temp/いけめん.jpg";
+import pyuta from "../assets/images/temp/pyu.jpg";
+import pashi from "../assets/images/temp/pashi.jpg";
+import bene from "../assets/images/temp/bene.jpg";
+import ikemen from "../assets/images/temp/ikemen.jpg";
+import chai from "../assets/images/temp/chai.jpg";
+import ryui from "../assets/images/temp/ryui.jpg";
+import monme from "../assets/images/temp/monme.jpg";
+import pashi2 from "../assets/images/temp/pashi2.jpg";
 
 import "../components/Customs/fireworkCanvas/fireworkCanvas.scss";
 
@@ -95,27 +99,19 @@ const InheritExecutivesPage: React.FC<Props> = (props) => {
             />
             <div style={{ textAlign: "center" }}>
               <div>
-                <h1 className={classes.textGradation}>
-                  部長： {props.member["４役"].部長.name}
-                </h1>
+                <h1 className={classes.textGradation}>部長： 久保田 花梨</h1>
                 <img src={pyuta} alt="" width="60%" />
               </div>
               <div>
-                <h1 className={classes.textGradation}>
-                  副部長： {props.member["４役"].副部長.name}
-                </h1>
+                <h1 className={classes.textGradation}>副部長： 若林 佑太郎</h1>
                 <img src={pashi} alt="" width="60%" />
               </div>
               <div>
-                <h1 className={classes.textGradation}>
-                  会計： {props.member["４役"].会計.name}
-                </h1>
+                <h1 className={classes.textGradation}>会計： 大島 菜瑚</h1>
                 <img src={bene} alt="" width="60%" />
               </div>
               <div>
-                <h1 className={classes.textGradation}>
-                  PA隊長： {props.member["４役"].PA隊長.name}
-                </h1>
+                <h1 className={classes.textGradation}>PA隊長： 長井 颯冬</h1>
                 <img src={ikemen} alt="" width="60%" />
               </div>
               <h1
@@ -126,7 +122,61 @@ const InheritExecutivesPage: React.FC<Props> = (props) => {
               >
                 1年間お疲れ様でした！！！！！！！！！
               </h1>
-              <p>時間なくてこれしか作れなかった！</p>
+            </div>
+            <br />
+            <div style={{ textAlign: "center" }}>
+              <br />
+              <h1
+                style={{
+                  fontFamily: "Impact",
+                  fontSize: 40,
+                }}
+              >
+                そして...
+              </h1>
+              <br />
+              <h1
+                style={{
+                  fontFamily: "Impact",
+                  fontSize: 40,
+                }}
+              >
+                そしてこれから１年よろしく！！！！！！！！
+              </h1>
+              <div>
+                <h1 className={classes.textGradation}>
+                  新部長： {props.member["４役"].部長.name}
+                </h1>
+                <img src={chai} alt="" width="60%" />
+              </div>
+              <div>
+                <h1 className={classes.textGradation}>
+                  新副部長： {props.member["４役"].副部長.name}
+                </h1>
+                <img src={ryui} alt="" width="60%" />
+              </div>
+              <div>
+                <h1 className={classes.textGradation}>
+                  新会計： {props.member["４役"].会計.name}
+                </h1>
+                <img src={monme} alt="" width="60%" />
+              </div>
+              <div>
+                <h1 className={classes.textGradation}>
+                  新PA隊長： {props.member["４役"].PA隊長.name}
+                </h1>
+                <img src={pashi2} alt="" width="60%" />
+              </div>
+              <h1
+                style={{
+                  fontFamily: "Impact",
+                  fontSize: 40,
+                }}
+              >
+                大変な時期だけど
+                <br />
+                みんなで乗り越えていこう！！
+              </h1>
             </div>
           </Paper>
         </Grid>

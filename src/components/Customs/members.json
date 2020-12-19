@@ -19,21 +19,21 @@
       "kana": "ほんだ あやね",
       "inst": "Trumpet",
       "entry": "2017",
-      "role": "元部長"
+      "role": ""
     },
     {
       "name": "長谷川 潮音",
       "kana": "はせがわ しおね",
       "inst": "Bass",
       "entry": "2017",
-      "role": "元副部長"
+      "role": ""
     },
     {
       "name": "石黒 遥香",
       "kana": "いしぐろ はるか",
       "inst": "Drums",
       "entry": "2017",
-      "role": "元会計"
+      "role": ""
     },
     {
       "name": "野村 千清",
@@ -61,21 +61,21 @@
       "kana": "くぼた かりん",
       "inst": "Bass",
       "entry": "2018",
-      "role": "部長"
+      "role": "元部長"
     },
     {
       "name": "大島 菜瑚",
       "kana": "おおしま なこ",
       "inst": "TenorSax",
       "entry": "2018",
-      "role": "会計"
+      "role": "元会計"
     },
     {
       "name": "長井 颯冬",
       "kana": "ながい はやと",
       "inst": "TenorSax",
       "entry": "2018",
-      "role": "PA隊長"
+      "role": "元PA隊長"
     },
     {
       "name": "竹下 沙耶",
@@ -94,23 +94,23 @@
     {
       "name": "若原 佑太郎",
       "kana": "わかはら ゆうたろう",
-      "inst": "Bass",
+      "inst": "Bass, 元副部長",
       "entry": "2019",
-      "role": "副部長"
+      "role": "PA隊長"
     },
     {
       "name": "村中 彩乃",
       "kana": "むらなか あやの",
       "inst": "Guitar",
       "entry": "2019",
-      "role": ""
+      "role": "会計"
     },
     {
       "name": "篠原 彪我",
       "kana": "しのはら ひょうが",
       "inst": "TenorSax",
       "entry": "2019",
-      "role": ""
+      "role": "部長"
     },
     {
       "name": "邊見 歩花",
@@ -145,7 +145,7 @@
       "kana": "おおた りゅうい",
       "inst": "Trombone",
       "entry": "2019",
-      "role": ""
+      "role": "副部長"
     },
     {
       "name": "久木崎 葉奈",

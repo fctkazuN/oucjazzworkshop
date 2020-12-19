@@ -36,6 +36,7 @@ const MainNavLg: React.FC = () => {
 
   const handleNavButtonClick = (slug: string) => () => {
     history.push(slug);
+    window.scroll(0, 0);
   };
 
   return (
