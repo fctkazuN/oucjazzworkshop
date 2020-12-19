@@ -126,7 +126,7 @@ const InheritExecutivesPage: React.FC<Props> = (props) => {
               >
                 1年間お疲れ様でした！！！！！！！！！
               </h1>
-              <p>時間なくてこれしか作れなった！</p>
+              <p>時間なくてこれしか作れなかった！</p>
             </div>
           </Paper>
         </Grid>
