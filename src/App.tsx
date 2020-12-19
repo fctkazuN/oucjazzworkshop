@@ -7,18 +7,27 @@ import MemberPage from "./pages/member";
 import SchedulePage from "./pages/Schedule";
 import ContactPage from "./pages/contact";
 import LinkPage from "./pages/link";
-import { navItems } from "./assets/constants/pageNavigations";
+import { NavItem, navItems } from "./assets/constants/pageNavigations";
 import { connect } from "react-redux";
 import { RootState } from "./state/store";
-import Backdrop from "@material-ui/core/Backdrop";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import InheritExecutives from "./pages/inheritExecutives";
+// import Backdrop from "@material-ui/core/Backdrop";
+// import CircularProgress from "@material-ui/core/CircularProgress";
+
+const allPages: NavItem[] = [
+  ...navItems,
+  {
+    title: "InheritExecutives",
+    slug: "/inherit_executives/",
+  },
+];
 
 const App: React.FC<Props> = ({ backdrop }) => {
   const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
-    if (location && !navItems.some((item) => item.slug === location.pathname)) {
+    if (location && !allPages.some((item) => item.slug === location.pathname)) {
       alert("存在しないページです");
       history.push("/");
     }
@@ -42,8 +51,11 @@ const App: React.FC<Props> = ({ backdrop }) => {
         <Route exact path="/link">
           <LinkPage />
         </Route>
+        <Route exact path="/inherit_executives/">
+          <InheritExecutives />
+        </Route>
       </Switch>
-      <Backdrop
+      {/* <Backdrop
         open={backdrop}
         style={{
           zIndex: 1701,
@@ -51,7 +63,7 @@ const App: React.FC<Props> = ({ backdrop }) => {
         }}
       >
         <CircularProgress color="inherit" />
-      </Backdrop>
+      </Backdrop> */}
     </Layout>
   );
 };

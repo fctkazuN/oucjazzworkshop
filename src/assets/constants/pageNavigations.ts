@@ -1,6 +1,6 @@
 // ページ情報
 
-type NavItem = {
+export type NavItem = {
   title: string;
   slug: string;
 };

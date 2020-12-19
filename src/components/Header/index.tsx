@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   drawer: {
-    width: theme.spacing(15),
+    width: theme.spacing(20),
     padding: theme.spacing(2),
   },
 }));

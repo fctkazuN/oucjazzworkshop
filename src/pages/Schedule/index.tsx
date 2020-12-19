@@ -163,9 +163,9 @@ const SchedulePageSm: React.FC<Props> = (props) => {
               <span className={classes.buttonSpace} />
             </div>
             {props.sm ? (
-              <ScheduleLg events={dispEvents} month={dispMonth} />
-            ) : (
               <ScheduleSm events={dispEvents} month={dispMonth} />
+            ) : (
+              <ScheduleLg events={dispEvents} month={dispMonth} />
             )}
           </Paper>
         </Grid>

@@ -3,7 +3,10 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Backdrop from "@material-ui/core/Backdrop";
-import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import CloseIcon from "@material-ui/icons/Close";
 
 import { connect } from "react-redux";
 import { RootState } from "../../state/store";
@@ -45,10 +48,6 @@ import subPhoto_33 from "../../assets/images/subPhotos/33.jpg";
 import subPhoto_34 from "../../assets/images/subPhotos/34.jpg";
 import subPhoto_35 from "../../assets/images/subPhotos/35.jpg";
 import subPhoto_36 from "../../assets/images/subPhotos/36.jpg";
-// import subPhoto_37 from "../../assets/images/subPhotos/37.jpg";
-// import subPhoto_38 from "../../assets/images/subPhotos/38.jpg";
-// import subPhoto_39 from "../../assets/images/subPhotos/39.jpg";
-// import subPhoto_40 from "../../assets/images/subPhotos/40.jpg";
 
 const useStyles = makeStyles((theme) => ({
   subPhotos: {
@@ -120,39 +119,37 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   backdrop: {
-    backdrop: {
-      zIndex: theme.zIndex.drawer + 1,
-    },
+    zIndex: theme.zIndex.drawer + 1,
   },
   moveRight0: {
-    animation: "$loop0 70s linear infinite",
+    animation: "$loop0 50s linear infinite",
   },
   moveRight1: {
-    animation: "$loop1 70s linear infinite",
+    animation: "$loop1 50s linear infinite",
   },
   moveRight2: {
-    animation: "$loop2 70s linear infinite",
+    animation: "$loop2 50s linear infinite",
   },
   moveRight3: {
-    animation: "$loop3 70s linear infinite",
+    animation: "$loop3 50s linear infinite",
   },
   moveRight4: {
-    animation: "$loop4 70s linear infinite",
+    animation: "$loop4 50s linear infinite",
   },
   moveRight5: {
-    animation: "$loop5 70s linear infinite",
+    animation: "$loop5 50s linear infinite",
   },
   moveRight6: {
-    animation: "$loop6 70s linear infinite",
+    animation: "$loop6 50s linear infinite",
   },
   moveRight7: {
-    animation: "$loop7 70s linear infinite",
+    animation: "$loop7 50s linear infinite",
   },
   moveRight8: {
-    animation: "$loop8 70s linear infinite",
+    animation: "$loop8 50s linear infinite",
   },
   moveRight9: {
-    animation: "$loop9 70s linear infinite",
+    animation: "$loop9 50s linear infinite",
   },
   "@keyframes loop0": {
     "0%": {
@@ -274,10 +271,6 @@ const shuffle = () => {
     subPhoto_34,
     subPhoto_35,
     subPhoto_36,
-    // subPhoto_37,
-    // subPhoto_38,
-    // subPhoto_39,
-    // subPhoto_40,
   ];
   for (let i = array.length - 1; i >= 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -296,6 +289,7 @@ const shuffle = () => {
 };
 
 const subPhotoLists = shuffle();
+console.log(subPhotoLists);
 
 /**
  *
@@ -316,26 +310,47 @@ const SubPhotos: React.FC<Props> = (props) => {
   };
 
   // // サブ画像変更管理
-  // const enterSubPhotoNext = () => {
-  //   SetIsScrolling(true);
-  // };
-  // const leaveSubPhotoNext = () => {
-  //   SetIsScrolling(false);
-  // };
-  // const enterSubPhotoPrev = () => {
-  //   setScrollLeft(true);
-  //   SetIsScrolling(true);
-  // };
-  // const leaveSubPhotoPrev = () => {
-  //   setScrollLeft(false);
-  //   SetIsScrolling(false);
-  // };
+  const handleSubPhotoNext = () => {
+    setBackdrop((prev) => {
+      const newI =
+        prev.i >= subPhotoLists[prev.index].length - 1 ? 0 : prev.i + 1;
+      const newIndex =
+        newI !== 0
+          ? prev.index
+          : prev.index >= subPhotoLists.length - 1
+          ? 0
+          : prev.index + 1;
+      return {
+        ...prev,
+        index: newIndex,
+        i: newI,
+      };
+    });
+  };
+  const handleSubPhotoPrev = () => {
+    setBackdrop((prev) => {
+      const newI =
+        prev.i <= 0 ? subPhotoLists[prev.index].length - 1 : prev.i - 1;
+      const newIndex =
+        prev.i > 0
+          ? prev.index
+          : prev.index <= 0
+          ? subPhotoLists.length - 1
+          : prev.index - 1;
+      return {
+        ...prev,
+        index: newIndex,
+        i: newI,
+      };
+    });
+  };
 
   const handleBackdropOpen = (index: number, i: number) => () => {
     console.log(index, i);
+    const newIndex = index >= subPhotoLists.length - 1 ? 0 : index;
     setBackdrop({
       open: true,
-      index,
+      index: newIndex,
       i,
     });
   };
@@ -377,30 +392,6 @@ const SubPhotos: React.FC<Props> = (props) => {
         onMouseEnter={handleFocus("subPhotos")}
         onMouseLeave={handleFocus("")}
       >
-        {/* <GridList
-        id="subPhoto-gridList2"
-        // cols={props.sm ? 2 : 4}
-        className={clsx(classes.gridList, classes.moveRight2)}
-        style={{
-          height: props.sm ? 96 : 150,
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-        }}
-        >
-        {subPhotoList2.map((img, index) => (
-          <GridListTile
-          key={index}
-          style={{
-            height: "100%",
-            width: props.sm ? "50%" : "25%",
-          }}
-          >
-          <img src={img} alt={"photo_" + index} />
-          </GridListTile>
-          ))}
-        </GridList> */}
         {subPhotoLists.concat([subPhotoLists[0]]).map((subPhotoList, index) => {
           return (
             <ul
@@ -411,7 +402,9 @@ const SubPhotos: React.FC<Props> = (props) => {
                 position: "absolute",
                 width: "100%",
                 animationPlayState:
-                  props.focus === "subPhotos" ? "paused" : "running",
+                  props.focus !== "subPhotos" || backdrop.open
+                    ? "paused"
+                    : "running",
               }}
             >
               {subPhotoList.map((img, i) => (
@@ -449,41 +442,43 @@ const SubPhotos: React.FC<Props> = (props) => {
             </ul>
           );
         })}
-        {/* <Fade in={props.focus === "subPhotos"}>
-        <div className={classes.subPhotoRotate}>
-        <span
-        className={classes.leftSpan}
-        onMouseEnter={enterSubPhotoPrev}
-        onMouseLeave={leaveSubPhotoPrev}
-        >
-        <ChevronLeftIcon
-        className={classes.photoScrollIcon}
-        style={{ fontSize: props.sm ? 32 : 64 }}
-        />
-        </span>
-        <span
-        className={classes.rightSpan}
-        onMouseEnter={enterSubPhotoNext}
-        onMouseLeave={leaveSubPhotoNext}
-        >
-        <ChevronRightIcon
-        className={classes.photoScrollIcon}
-        style={{ fontSize: props.sm ? 32 : 64 }}
-        />
-        </span>
-        </div>
-      </Fade> */}
       </Paper>
-      <Backdrop
-        open={backdrop.open}
-        className={classes.backdrop}
-        onClick={() => {}}
-      >
-        <div>
-          <Typography>aaaaaa</Typography>
-          {backdrop.open ? (
-            <img src={subPhotoLists[backdrop.index][backdrop.i]} alt="" />
-          ) : null}
+      <Backdrop open={backdrop.open} className={classes.backdrop}>
+        <div style={{ width: "100%" }}>
+          <div style={{ width: "100%", textAlign: "right" }}>
+            <IconButton
+              style={{ color: "#fff", margin: 8 }}
+              onClick={() => setBackdrop((prev) => ({ ...prev, open: false }))}
+            >
+              <CloseIcon fontSize="large" color="inherit" />
+            </IconButton>
+          </div>
+          <div
+            style={{
+              height: window.innerHeight - 200,
+              width: "100%",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <span className={classes.leftSpan} onClick={handleSubPhotoPrev}>
+              <ChevronLeftIcon
+                className={classes.photoScrollIcon}
+                style={{ fontSize: props.sm ? 32 : 64 }}
+              />
+            </span>
+            {backdrop.open ? (
+              <img src={subPhotoLists[backdrop.index][backdrop.i]} alt="" />
+            ) : null}
+            <span className={classes.rightSpan} onClick={handleSubPhotoNext}>
+              <ChevronRightIcon
+                className={classes.photoScrollIcon}
+                style={{ fontSize: props.sm ? 32 : 64 }}
+              />
+            </span>
+          </div>
         </div>
       </Backdrop>
     </React.Fragment>

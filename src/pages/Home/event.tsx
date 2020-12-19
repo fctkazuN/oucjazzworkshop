@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 // ホーム画面のイベントに表示したい大イベント名のリスト
 // イベント欄に表示したいものを適宜追加
-const bigEventList = ["新歓ライブ", "緑丘祭", "定期演奏会"];
+const bigEventList = ["新歓ライブ", "緑丘祭", "定期演奏会", "４役交代式"];
 
 const EventComponent: React.FC<Props> = (props) => {
   const classes = useStyles();

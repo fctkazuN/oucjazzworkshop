@@ -54,10 +54,11 @@ const HomePage: React.FC<Props> = (props) => {
         <Grid item id="mainPhotos" xs={12}>
           <MainPhotos sm={props.sm} />
         </Grid>
-        {/* TODO サイズ感が難しい 保留 */}
-        <Grid item id="subPhotos" xs={12}>
-          <SubPhotos sm={props.sm} />
-        </Grid>
+        {!props.sm ? (
+          <Grid item id="subPhotos" xs={12}>
+            <SubPhotos sm={props.sm} />
+          </Grid>
+        ) : null}
         <Grid item id="updates" xs={12} sm={8}>
           <Paper className={classes.content1} id="information">
             <Typography variant="h6" className={classes.subTitle}>
@@ -78,7 +79,7 @@ const HomePage: React.FC<Props> = (props) => {
                   What's New ?
                 </Typography>
                 <List disablePadding>
-                  {[{ date: "20.12.1", text: "ホームページリニューアル" }].map(
+                  {[{ date: "20.12.19", text: "ホームページリニューアル" }].map(
                     (row) => (
                       <ListItem dense key={row.date}>
                         <Typography
